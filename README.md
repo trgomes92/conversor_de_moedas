@@ -1,5 +1,9 @@
 # ConversorDeMoedas
 
+<a href="https://gifyu.com/image/Sz2XP"><img src="https://s10.gifyu.com/images/conversor.gif" alt="conversor.gif" border="0" /></a>
+
+#
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
 ## Development server
