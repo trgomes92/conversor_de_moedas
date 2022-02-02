@@ -1,0 +1,57 @@
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 25px;
+  display: inline-block;
+  transition: 0.8s;
+}
+
+#header{
+  background: rgb(0, 98, 128);
+  height: 60px;
+  width: 100%;
+  box-shadow:  0 11px -4px #333;
+}
+
+.bi-coin{
+  display:flex;
+  align-items: center;
+  font-size: 40px; 
+  color: #fddb3a;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.titulo{
+  display: inline-block;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+.menu{
+  min-width: 300px;
+  display: inline;
+  position: absolute;
+  top: 13px;
+  left: 320px;
+  margin: 0 40px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+  padding: 10px;
+  transition: 0.8s;
+}
+
+.menu a:hover {
+  color: #fddb3a;
+}
+
+

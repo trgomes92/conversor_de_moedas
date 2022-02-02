@@ -1,0 +1,16 @@
+.card{
+  border-radius: 10px;
+  box-shadow: 0px 7px 9px 1px rgb(53 53 53 / 18%);
+}
+
+.btn-confirmar{
+  color: #fff;
+  background-color: rgb(0, 98, 128);
+  border-color: rgb(0, 73, 95);
+  font-weight: 400;
+}
+
+.btn-confirmar i:hover {
+  color: #fddb3a;
+  transition: 0.8s;
+}

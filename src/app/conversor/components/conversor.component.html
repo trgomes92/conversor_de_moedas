@@ -1,0 +1,46 @@
+<div class="alert alert-danger" role="alert" *ngIf="possuiErro">
+  Erro obtendo dados. Tente novamente.
+</div>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-6">
+      <div class="card p-5">
+        <h6>{{ description }}</h6>
+        <div>
+          <div class="panel-body">
+            <form #conversaoForm="ngForm" class="w-100  mt-3">
+              <div>
+                <div class="form-floating mb-3 ">
+                  <select id="moeda1InputLabel" title="Selecione uma moeda" name="moedaDe" class="form-control shadow-sm  mb-2 bg-light rounded " [(ngModel)]="conversao.moedaDe" required>
+                    <option *ngFor="let moeda of moedas" [value]="moeda.symbols">
+                      {{ moeda.symbols }} - {{ moeda.descricao }}
+                    </option>
+                  </select>
+                  <label for="moeda1InputLabel">Converter de</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <select id="moeda2InputLabel" title="Selecione a segunda moeda" name="moedaPara" class="form-control shadow-sm  mb-2 bg-light rounded" [(ngModel)]="conversao.moedaPara" required>
+                    <option *ngFor="let moeda of moedas" [value]="moeda.symbols">
+                      {{ moeda.symbols }} - {{ moeda.descricao }}
+                    </option>
+                  </select>
+                  <label for="moeda2InputLabel">Para</label>
+                </div>
+                <div class="form-floating mb-4">
+                  <input  type="number" name="valor" class="form-control shadow-sm  mb-2 bg-light rounded" [(ngModel)]="conversao.valor" numero required id="valorInputLabel"  title="Informe o valor a ser convertido"/>
+                  <label for="valorInputLabel">Valor</label>
+                </div>
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-confirmar" title="Clique para ver o resultado da conversão" data-bs-toggle="modal" data-bs-target="#modalCotacao" (click)="converter()" [disabled]="!conversaoForm.form.valid">
+                <i class="bi bi-arrow-repeat" style="font-size: 15px; font-style: normal;"> Converter</i></button>       
+            </form>
+          </div>
+          <div>
+            <modal-cotacao [id]="'modalCotacao'" [conversaoResponse]="conversaoResponse" [conversao]="conversao" (onConfirm)="init()"></modal-cotacao>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

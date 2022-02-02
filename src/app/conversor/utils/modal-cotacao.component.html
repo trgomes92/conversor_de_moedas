@@ -1,0 +1,47 @@
+<div class="modal fade" [id]="id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="staticBackdropLabel">Resultado da Conversão</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="mt-2 mb-2">
+            <div>
+              <p class="p-1 resultado  card-moldura shadow-sm bg-light rounded"> {{ conversao.valor }} {{ conversao.moedaDe }} <i class="px-3 bi bi-forward-fill" style="color: rgb(0, 98, 128);"></i> {{ valorConvertido }} {{ conversao.moedaPara }}</p>
+            </div>
+            <div class="cotacao">
+              <div class="w-50">
+                <span class="p-1 moeda card-moldura card-moldura shadow-sm bg-light rounded">
+                  {{ conversao.moedaPara }}
+                  <i _ngcontent-evf-c46="" class="bi bi-arrow-right-short"></i>
+                  {{ cotacaoPara }} {{ conversao.moedaDe }}
+                </span>
+              </div>
+              <i class="px-3 bi bi-currency-exchange" style="font-size: 2rem; color: rgb(0, 98, 128);"></i>
+              <div class="w-50">
+                <span class="p-1 moeda card-moldura card-moldura shadow-sm bg-light rounded">
+                  {{ conversao.moedaDe }}
+                  <i _ngcontent-evf-c46="" class="bi bi-arrow-right-short"></i>
+                  {{ cotacaoDe }} {{ conversao.moedaPara }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="card w-100">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Data: {{ dataCotacao | dataBr }}</li>
+              <li class="list-group-item">Moedas selecionadas: {{ conversao.moedaDe }} <i class="bi bi-arrow-right-short"></i> {{ conversao.moedaPara }}</li>
+              <li class="list-group-item">Valor informado: {{ conversao.valor }}</li>
+              <li class="list-group-item">Resultado da conversão: {{ valorConvertido }} {{ conversao.moedaPara }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
