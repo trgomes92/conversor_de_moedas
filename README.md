@@ -2,7 +2,9 @@
 
 <img src="https://s10.gifyu.com/images/conversor.gif" alt="conversor.gif" border="0" />
 
-# Evidencias dos testes unitários
+# Evidências dos testes unitários
+
+### Testes realizados no Google Chrome e Firefox.
 
 <img src="https://s10.gifyu.com/images/evidencias.png" alt="evidencias.png" border="0" />
 
