@@ -14,12 +14,12 @@ export class ConversorComponent implements OnInit {
 
   description = ' Por favor selecione a moeda a ser convertida.';
 
-  moedas: Moeda[];
-  conversao: Conversao;
-  possuiErro: boolean;
-  conversaoResponse: ConversaoResponse;
+  moedas: Moeda[]; // Lista de moedas
+  conversao: Conversao; // Modo de conversao (Armazena o valor MoedaDe e MoedaPara)
+  possuiErro: boolean; // Verifica se possui erro e se sera exibido ou não a mensagem de erro
+  conversaoResponse: ConversaoResponse; // Retorno da consulta com os valores da conversão
 
-  @ViewChild('conversaoForm', { static: true }) conversaoForm: NgForm;
+  @ViewChild('conversaoForm', { static: true }) conversaoForm: NgForm; // Conversor form do tipo NgForm, que fara a ligação entre o formulario e o atributo de classe
 
   constructor(
     private moedaService: MoedaService,
@@ -29,22 +29,25 @@ export class ConversorComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.moedas = this.moedaService.listarTodas();
-    this.init();
+    this.moedas = this.moedaService.listarTodas(); // Fara o load da lista das moedas do serviço.
+    this.init(); 
   }
 
+// Inicializa o codigo chamando o objeto "conversao", e define as moedas padrão ex: ('USD', 'BRL', null)
+
   init(): void {
-    this.conversao = new Conversao(null);
+    this.conversao = new Conversao(null); 
     this.possuiErro = false;
     
   }
 
+// O metodo converter obtem os dados da api
   converter(): void {
     if (this.conversaoForm.form.valid) {
       this.conversorService
         .converter(this.conversao)
-        .subscribe(
-          response => {
+        .subscribe( // O subscribe vai se inscrever para receber o retorno do Observable onde ele recebera os dados
+          response => { // Recebe os dados de retorno contendo os rates e a data da conversao
             let rates = [];
             rates[response.query.to] = response.result;
             this.conversaoResponse = new ConversaoResponse(
@@ -53,7 +56,7 @@ export class ConversorComponent implements OnInit {
               rates
             );
           },
-          error => this.possuiErro = true
+          error => this.possuiErro = true // Se o erro for True sera exibido a mensagem de erro
         );
     }
   }

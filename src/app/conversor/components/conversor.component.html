@@ -1,5 +1,7 @@
+<!-- conversor -->
 <div class="alert alert-danger" role="alert" *ngIf="possuiErro">
-  Erro obtendo dados. Tente novamente.
+  Erro ao obter os dados. Tente novamente.
+  <!-- Se o erro for True a mensagem sera exibida -->
 </div>
 <div class="container pt-5">
   <div class="row">
@@ -8,10 +10,14 @@
         <h6>{{ description }}</h6>
         <div>
           <div class="panel-body">
+            <!-- conversaoForm verifica se o formulario é valido e habilita o submit-->
             <form #conversaoForm="ngForm" class="w-100  mt-3">
               <div>
                 <div class="form-floating mb-3 ">
+                  <!-- Select com a moeda de origem -->
+                  <!-- [(ngModel)]="conversao.moedaDe" Two-way binding associado ao moedaDe moeda de origem  -->
                   <select id="moeda1InputLabel" title="Selecione uma moeda" name="moedaDe" class="form-control shadow-sm  mb-2 bg-light rounded " [(ngModel)]="conversao.moedaDe" required>
+                    <!-- Diretiva ngFor para carregar a lista de moedas e xibir   -->
                     <option *ngFor="let moeda of moedas" [value]="moeda.symbols">
                       {{ moeda.symbols }} - {{ moeda.descricao }}
                     </option>
@@ -19,7 +25,11 @@
                   <label for="moeda1InputLabel">Converter de</label>
                 </div>
                 <div class="form-floating mb-3">
+                  <!-- Select com a moeda de destino -->
+                  <!-- [(ngModel)]="conversao.moedaPara" Two-way binding associado ao moedaPara a moeda de destino -->
+
                   <select id="moeda2InputLabel" title="Selecione a segunda moeda" name="moedaPara" class="form-control shadow-sm  mb-2 bg-light rounded" [(ngModel)]="conversao.moedaPara" required>
+                    <!-- Diretiva ngFor para carregar a lista de moedas e xibir   -->
                     <option *ngFor="let moeda of moedas" [value]="moeda.symbols">
                       {{ moeda.symbols }} - {{ moeda.descricao }}
                     </option>
@@ -27,16 +37,22 @@
                   <label for="moeda2InputLabel">Para</label>
                 </div>
                 <div class="form-floating mb-4">
-                  <input  type="number" name="valor" class="form-control shadow-sm  mb-2 bg-light rounded" [(ngModel)]="conversao.valor" numero required id="valorInputLabel"  title="Informe o valor a ser convertido"/>
+                  <!-- Input com o valor da moeda -->
+                  <!-- [(ngModel)]="conversao.valor" Two-way binding armazena o valor associado ao conversao  -->
+                  <input type="number" name="valor" class="form-control shadow-sm  
+                  mb-2 bg-light rounded" [(ngModel)]="conversao.valor" numero required id="valorInputLabel" title="Informe o valor a ser convertido" />
                   <label for="valorInputLabel">Valor</label>
                 </div>
               </div>
               <hr>
+              <!-- Evento (click)="converter()" ira converter ao ser clicado -->
+              <!-- Atribuição [disabled] so sera ativo quando o formulario for valido  -->
               <button type="submit" class="btn btn-confirmar" title="Clique para ver o resultado da conversão" data-bs-toggle="modal" data-bs-target="#modalCotacao" (click)="converter()" [disabled]="!conversaoForm.form.valid">
-                <i class="bi bi-arrow-repeat" style="font-size: 15px; font-style: normal;"> Converter</i></button>       
+                <i class="bi bi-arrow-repeat" style="font-size: 15px; font-style: normal;"> Converter</i></button>
             </form>
           </div>
           <div>
+            <!-- Chamada da modal para exibir o resultado -->
             <modal-cotacao [id]="'modalCotacao'" [conversaoResponse]="conversaoResponse" [conversao]="conversao" (onConfirm)="init()"></modal-cotacao>
           </div>
         </div>

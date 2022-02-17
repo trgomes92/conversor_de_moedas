@@ -17,30 +17,31 @@ export class NumeroDirective implements ControlValueAccessor {
 
   constructor(private el: ElementRef) {}
 
+  // Implementa evento de keyup para o elemento da diretiva
   @HostListener('keyup', ['$event'])
-  onKeyUp($event: any) {
-    let valor = $event.target.value;
-    let posDecimais = valor.indexOf('.');
+  onKeyUp($event: any) { // OnKeyUp ao pressionar a tela
+    let valor = $event.target.value; // obter o valor do campo de texto
+    let posDecimais = valor.indexOf('.'); // Formatação com . para separar os decimais
 
-    valor = valor.replace(/[\D]/g, '');
+    valor = valor.replace(/[\D]/g, ''); // Remove tudo que nao for numero e substitui por ''
 
-    if (posDecimais > 0) {
-      valor = valor.substr(0, posDecimais) + '.' + valor.substr(posDecimais);
+    if (posDecimais > 0) { // Caso os decimais seja maior que 0
+      valor = valor.substr(0, posDecimais) + '.' + valor.substr(posDecimais); //Adiciona o . e adiciona os valores dos decimais em seguida
     }
 
-    $event.target.value = valor;
+    $event.target.value = valor; // Adiciona o valor no campo de texto
     this.onChange(valor);
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: any): void { // Registra a função a ser chamada para atualizar o valor na model.
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: any): void { // Registra a função a ser chamada para atualizar o valor na model para o evento touched (mobile)
     this.onTouched = fn;
   }
 
-  writeValue(value: any): void {
+  writeValue(value: any): void { // Vai obter o valor contido na model
     this.el.nativeElement.value = value;
   }
 }

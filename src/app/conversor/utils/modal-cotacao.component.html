@@ -1,3 +1,4 @@
+<!-- Modal com os resultados da conversão -->
 <div class="modal fade" [id]="id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -9,10 +10,12 @@
         <div>
           <div class="mt-2 mb-2">
             <div>
+              <!-- Valor informado e moedaDe informadas e o resultado da conversão para a moedaPara -->
               <p class="p-1 resultado  card-moldura shadow-sm bg-light rounded"> {{ conversao.valor }} {{ conversao.moedaDe }} <i class="px-3 bi bi-forward-fill" style="color: rgb(0, 98, 128);"></i> {{ valorConvertido }} {{ conversao.moedaPara }}</p>
             </div>
             <div class="cotacao">
               <div class="w-50">
+                <!-- Exibe as taxas de conversão de ambas as moedas -->
                 <span class="p-1 moeda card-moldura card-moldura shadow-sm bg-light rounded">
                   {{ conversao.moedaPara }}
                   <i _ngcontent-evf-c46="" class="bi bi-arrow-right-short"></i>
@@ -31,15 +34,20 @@
           </div>
           <div class="card w-100">
             <ul class="list-group list-group-flush">
+              <!-- Data da cotação com a pipe para o padrao BR -->
               <li class="list-group-item">Data: {{ dataCotacao | dataBr }}</li>
+              <!-- Informa as siglas das moedas selecionadas moedaDe e moedaPara -->
               <li class="list-group-item">Moedas selecionadas: {{ conversao.moedaDe }} <i class="bi bi-arrow-right-short"></i> {{ conversao.moedaPara }}</li>
+              <!-- Valor da conversão que foi informado  -->
               <li class="list-group-item">Valor informado: {{ conversao.valor }}</li>
+              <!-- Resultado da conversão com o valor convertido e a sigla da moeda  -->
               <li class="list-group-item">Resultado da conversão: {{ valorConvertido }} {{ conversao.moedaPara }}</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="novaConsulta()">Nova Consulta</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>

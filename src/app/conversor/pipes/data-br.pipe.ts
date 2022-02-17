@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'dataBr',
 })
 export class DataBrPipe implements PipeTransform {
-  transform(dataEn: string): string {
+  transform(dataEn: string): string { // Transforma a data para o padrao BR.
     if (!dataEn) {
       return '';
     }

@@ -6,11 +6,11 @@ import { Moeda } from '../models';
   providedIn: 'root',
 })
 export class MoedaService {
-  private moedas: Moeda[];
+  private moedas: Moeda[]; // Array com a lista de moedas com as siglas e descrições das moedas.
 
   constructor() { }
 
-  private moedasObj = [
+  private moedasObj = [  // base de dados local com as siglas (symbols e descrição)
     { symbols: 'AUD', descricao: 'Dólar australiano' },
     { symbols: 'BGN', descricao: 'Lev búlgaro' },
     { symbols: 'BRL', descricao: 'Real brasileiro' },
@@ -45,16 +45,16 @@ export class MoedaService {
     { symbols: 'ZAR', descricao: 'Rand África do Sul' },
   ];
 
-  listarTodas(): Moeda[] {
+  listarTodas(): Moeda[] { // Metodo listar todas, converte a base de dados para uma listagem de moedas.
     if (this.moedas) {
       return this.moedas;
     }
-    this.moedas = [];
+    this.moedas = []; // Para cada moeda da listagem de dados
 
-    for (let moedaObj of this.moedasObj) {
-      let moeda: Moeda = new Moeda();
-      Object.assign(moeda, moedaObj);
-      this.moedas.push(moeda);
+    for (let moedaObj of this.moedasObj) { // Pega o objeto
+      let moeda: Moeda = new Moeda(); // Instancia uma nova moeda
+      Object.assign(moeda, moedaObj); // Pega o objeto de origem "moeda" e pega uma outra instancia de objeto populada "MoedaObj", o valor da sigla e descrição sera atribuido a moeda instanciada.
+      this.moedas.push(moeda); // push para adicionar a moeda populada na listagem de moedas
     }
     return this.moedas;
   }

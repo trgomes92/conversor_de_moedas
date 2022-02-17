@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { ConversorComponent } from './components';
-import { MoedaService, ConversorService } from './services';
-import { NumeroDirective } from './directives';
-import { ModalCotacaoComponent } from './utils';
-import { DataBrPipe } from './pipes';
+import { ConversorComponent } from './components'; // Modulo do conversor
+import { MoedaService, ConversorService } from './services'; // Modulo Moedas e Services
+import { NumeroDirective } from './directives'; // Modulo das Diretivas
+import { ModalCotacaoComponent } from './utils'; // Modulo do Modal
+import { DataBrPipe } from './pipes'; // modulo pipes
 
 @NgModule({
   declarations: [
